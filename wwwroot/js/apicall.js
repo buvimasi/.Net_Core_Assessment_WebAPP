@@ -15,12 +15,19 @@
                 processData: false,
                 success: function (data, textStatus, jQxhr) {
                     alert("User successfully authenticated")
-                    window.location.replace('~/Pages//Manager.html')
+                    if (data.Role == "Manager")
+                    {
+                        window.location.replace('~/Pages//Manager.html')
+                    }
+                    else
+                    {
+                        window.location.replace('~/Pages//Wfm_Manager.html')
+                    }
+                   
 
                 },
                 error: function (jqXhr, textStatus, errorThrown) {
-                    alert("User Failed to authenticate")
-                    window.location.replace('~/Pages//Wfm_Manager.html')
+                    alert("User Failed to authenticate")   
                 }
             });
 
