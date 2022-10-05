@@ -2,25 +2,24 @@
     function () {
         $('#submit').click(function () {
 
-
+            var Username = $("#uname").val();
+            var Password = $("#psw").val();
+         
+            console.log(Username);
             $.ajax({
-                url: 'http://localhost:7222/api/user/authenticate',
-                dataType: 'json',
-                type: 'post',
-                contentType: 'application/json',
-                data: {
-                    username: $('#uname').val(),
-                    password: $('#psw').val()
-                },
+                url: 'http://localhost:7222/api/User/authenticate',
+                dataType: "json",
+                type: "GET",
+                contentType: "application/json",
+                data: 'username=' + Username + '&password=' + Password,
                 processData: false,
                 success: function (data, textStatus, jQxhr) {
-                    var json = $.parseJSON(data)
                     alert("User successfully authenticated")
                     if (data.Role == "Manager") {
-                        window.location.replace('~/Pages//Manager.cshtml')
+                        window.location.replace('SoftLockPage')
                     }
                     else {
-                        window.location.replace('~/Pages//Wfm_Manager.cshtml')
+                        window.location.replace('EmployeePage')
                     }
 
 
