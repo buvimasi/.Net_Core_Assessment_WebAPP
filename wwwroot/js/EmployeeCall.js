@@ -1,18 +1,20 @@
-﻿$.get("https://localhost:7201/api/Employee/GetEmployee", function (data, status) {
+﻿$.get("http://localhost:7222/api/Employee", function (data, status) {
 
-    if (data) {
-        let code = ""
-        for (let x in data) {
-            code += "<tr>"
-            code += "<td>" + data[x].Name + "</td>"
-            code += "<td>" + data[x].Email + "</td>"
-            code += "<td>" + data[x].Manager + "</td>"
-            code += "<td>" + data[x].Wfm_Manager + "</td>"
-            code += "<td>" + data[x].Status + "</td>"
-
-            code += "</tr>"
-        }
-        $("#tdata").html(code)
+    let code = "";
+    for (let x in data) {
+        code += "<tr>"
+        code += "<td>" + data[x].employeeID + "</td>"
+        code += "<td>" + data[x].name + "</td>"
+        code += "<td>" + data[x].status + "</td>"
+        code += "<td>" + data[x].manager + "</td>"
+        code += "<td>" + data[x].wfm_Manager + "</td>"
+        code += "<td>" + data[x].email + "</td>"
+        code += "<td>" + data[x].experience + "</td>"
+        code += "<td>"
+        for (let y in data[x].skills)
+            code += data[x].skills[y] + "  "
+        code += "</td>"
+        code += "<td> <button id=request> RequestLock </button> </td> </tr>"
     }
-
+    $('#tbody').html(code)
 })

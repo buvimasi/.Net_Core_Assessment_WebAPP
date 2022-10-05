@@ -4,30 +4,29 @@
 
 
             $.ajax({
-                url: 'http://localhost:5000/api/user/authenticate',
+                url: 'http://localhost:7222/api/user/authenticate',
                 dataType: 'json',
                 type: 'post',
                 contentType: 'application/json',
-                data: JSON.stringify({
+                data: {
                     username: $('#uname').val(),
                     password: $('#psw').val()
-                }),
+                },
                 processData: false,
                 success: function (data, textStatus, jQxhr) {
+                    var json = $.parseJSON(data)
                     alert("User successfully authenticated")
-                    if (data.Role == "Manager")
-                    {
-                        window.location.replace('~/Pages//Manager.html')
+                    if (data.Role == "Manager") {
+                        window.location.replace('~/Pages//Manager.cshtml')
                     }
-                    else
-                    {
-                        window.location.replace('~/Pages//Wfm_Manager.html')
+                    else {
+                        window.location.replace('~/Pages//Wfm_Manager.cshtml')
                     }
-                   
+
 
                 },
                 error: function (jqXhr, textStatus, errorThrown) {
-                    alert("User Failed to authenticate")   
+                    alert("User successfully authenticated")
                 }
             });
 
@@ -36,4 +35,4 @@
         })
 
     }
-)
+);
