@@ -14,7 +14,8 @@
         for (let y in data[x].skills)
             code += data[x].skills[y] + "  "
         code += "</td>"
-        code += "<td> <button id=request> RequestLock </button> </td> </tr>"
+        code += "<td> <a href= SoftLockRequest?employee_ID =2 > RequestLock </a> </td> </tr>"
     }
     $('#tbody').html(code)
 })
+
